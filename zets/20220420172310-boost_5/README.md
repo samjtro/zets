@@ -35,12 +35,9 @@
 - each sensor is a container
 - those containers connect as nodes to a structure that is deployed and managed with k8s
 - graph theory comes into play with large scale node architectures
-
-**We are building skynet**
-
-- kubernetes architecture; nodes can all communicate with themselves and pass data, edge computing is what happens when the car uses all sensors as nodes in the cluster
-- mars rover communicates with itself through mesh communication from sensors running as nodes
-- we are writing the architecture for computers to talk to each other in a variety of ways
+- kubernetes architecture; nodes can all communicate with themselves and pass data
+- edge computing is what happens when the car uses all sensors as nodes in the cluster; or the mars rover, sensors running as nodes communicate through mesh
+- k8s is the  architecture for computers to talk to each other in a variety of ways
 
 **Cybersecurity**
 
@@ -49,11 +46,10 @@
 - can create supercomputer power clusters with aws/gcp
 
 **Entry points**
+
 - application that runs, different from a command
 
 > Learn YAML
 > Learn POSIX Shell - For DOCKERFILE
 > Makes much more sense to learn shell before OOP
 > Forces you to understand how a computer thinks v High-level paradigms
-
-
