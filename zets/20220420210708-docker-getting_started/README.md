@@ -1,4 +1,6 @@
-# Docker -- Getting Started
+# [Docker -- Getting Started](https://docs.docker.com/get-started/)
+
+Available on [Github](https://github.com/docker/getting-started)
 
 ## Getting Started
 
@@ -99,7 +101,7 @@ docker: Error response from daemon: driver failed programming external connectiv
 
 The old container is still running!
 
-**Removing the old container**
+### Removing the old container
 
 0. Get the container ID utilizing:
 
@@ -113,11 +115,21 @@ The old container is still running!
 
 `docker rm <id>`
 
-**Start the new container**
+### Start the new container
 
 0. Run the updated app
 
 `docker run -dp 3000:3000 getting-started`
 
 *localhost:3000 should have updated*
+
+### Recap
+
+- When the update occurred, all of the existing items added to the list vanished
+- We can make code updates without needing to rebuild/start anew after every change
+
+## Sharing our App
+
+To share Docker images, you have to use a Docker registry
+
 
