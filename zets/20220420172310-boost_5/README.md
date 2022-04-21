@@ -42,4 +42,18 @@
 - mars rover communicates with itself through mesh communication from sensors running as nodes
 - we are writing the architecture for computers to talk to each other in a variety of ways
 
+**Cybersecurity**
+
+- build home/cloud/hybrid k8s cluster
+- point nodes to internet, syncing communication and cracking vulnerabilities to make money
+- can create supercomputer power clusters with aws/gcp
+
+**Entry points**
+- application that runs, different from a command
+
+> Learn YAML
+> Learn POSIX Shell - For DOCKERFILE
+> Makes much more sense to learn shell before OOP
+> Forces you to understand how a computer thinks v High-level paradigms
+
 
