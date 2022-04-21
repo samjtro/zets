@@ -134,3 +134,163 @@ To share Docker images, you have to use a Docker registry
 
 > Most popular is [Docker Hub](hub.docker.com)
 
+**Create a repo**
+
+- If you haven't, login to Docker Hub:
+
+`docker login -u <user>`
+
+- Then, tag the image with the name of the Repo
+
+`docker tag <img_name> <name>/<repo_name>`
+
+- Now, push the container to Docker Hub:
+
+`docker push <user>/<repo_name>`
+
+### Running the shared Image on a New Instance
+
+- Login to [Play with Docker](https://labs.play-with-docker.com/)
+- Click "+ ADD NEW INSTANCE"
+- Run the app:
+
+`docker run -dp 3000:3000 <name>/<repo_name>`
+
+## Persistence
+
+Why does our data *not* persist normally?
+
+### The Container's fs
+
+When a container runs, it uses those layers from an image for its fs
+- Each container gets "scratch space", to create/update/remove files
+- Any changes made in one container using the same image won't be seen in another
+
+Start an ubuntu container
+- Creating a file named "/data.txt" 
+- With a random number between 1-10000
+
+`docker run -d ubuntu bash -c "shuf -i 1-10000 -n 1 -o /data.txt && tail -f /dev/null"`
+
+To view the number:
+
+`docker exec <id> cat /data.txt`
+
+On another Ubuntu container, that '/data.txt' file will be gone.
+
+> To **Force End** a running container, use `docker rm -f`
+
+### Container Volumes
+
+[Volumes](https://docs.docker.com/storage/volumes/) provide the ability to connect spec fs paths of the container with the host machine
+- Container directory is mounted == changes in that dir are seen on the host machine
+- If we mount the same dir across container restarts, we are able to see the same files
+
+2 main types of volumes; named volumes & bind points
+
+### Persisting data on the todo app
+
+By default the todo app stores data in a SQLite db located at `/etc/todos/todo.db`
+
+Because SQLite is a relational db that stores its data in a single file, we can persist that file on the host and make it available to the next container
+- By creating a vol and attaching it to the dir the data is stored in
+
+Going to use a Named Volume -- buckets of data
+- Maintains the physical location of data on disk referenced by the name of the volume
+
+0. Create a volume
+
+`docker volume create todo-db`
+
+1. Stop the container if neccesary, and start a new container adding the -v flag
+- Specifies volume mount, name it and mount to `/etc/todos/` which captures files created at the path
+
+`docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started`
+
+When restarting the container now, data persists in the mounted dir
+
+### Diving into the volume
+
+When using a named volume, you can use `docker volume inspect <vol_name>` to view where that data is actually stored
+
+```
+[
+    {
+        "CreatedAt": "2022-04-21T08:32:38-06:00",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/todo-db/_data",
+        "Name": "todo-db",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+```
+
+`Mountpoint` is the location on disk where data is stored
+
+## Using Bind Mounts
+
+Named Volumes persist and are good for cases where we don't have to worry about where the data is stored
+- With **bind points**, we control the exact host mountpoint
+	- Can use this to provide additional data into containers & persist data
+	- ie Mount our source code into the container to see if the code changes, responds, and lets us see changes immediately
+
+With node [nodemon](https://npmjs.com/package/nodemon) is a good tool
+
+### Quick Volume Type Comparisons
+
+Bind Mounts / Named Volumes are the two types of volumes; there are additional volume drive, eg:
+0. SFTP
+1. Ceph
+2. NetApp
+3. S3, etc.
+
+						Named Volumes		Bind Points
+
+Host Location					Docker chooses		You control
+Mount Example (-v)				my-vol:/usr/local/data	/path/to/data:/usr/local/data
+Popultes new volume with container contents	yes			no
+Supports Volume Drivers				yes			no
+
+### Dev-mode Containers
+
+0. Mount src code to container
+1. Install all dependencies (including "dev" pkg)
+2. Start nodemon to watch fs changes
+
+**Starting a dev-mode container implementation**
+
+0. cd into app src code
+1. Run this command:
+
+```
+docker run -dp 3000:3000 \
+    -w /app -v "$(pwd):/app" \
+    node:12-alpine \
+    sh -c "yarn install && yarn run dev"
+```
+
+- -w /app == sets the container's pwd where the command will print from
+- -v "$(pwd):/app" == bind mount the host's present app dir to the container's /app dir
+- node:12-alpine == the image to use
+	- base image from the app from the dockerfile
+- sh -c "yarn install && yarn run dev" == the command to be executed
+	- start an sh shell
+	- run yarn install to instal dependencies
+	- yarn run dev to run it
+		- inside the package.json, the dev script is starting nodemon
+
+Watch logs using:
+
+`docker logs -f <id>`
+
+Make changes to your app, stop it and then rebuild the new image with the old `docker buiild -t <img_name>`.
+
+Using bind mounts is very common for local dev setups. The advantage is that the dev machine doesn't need to have all of the build tools/environments installed
+- With the single `docker run`; the dev env is pulled/ ready to go
+- docker compose will help simplify these commands
+
+## Multi-Container Apps
+
+

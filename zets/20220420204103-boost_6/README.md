@@ -2,7 +2,17 @@
 
 ## Run First Linux Container
 
-0. docker run -it --rm ubuntu
+`docker run -it --rm <container-name>`
+
+- -i = interactive
+- -t = teletype
+
+--rm = remove
+
+--privileged
 
 ## Run Rob's Workspace Linux Container
 
+0. Pull the image:
+
+`docker pull rwxrob/workspace`
