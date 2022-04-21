@@ -15,4 +15,11 @@ read name
 
 mkdir $HOME/zet/zets/${dir}/${name}-${dt}
 touch $HOME/zet/zets/${dir}/${name}-${dt}/README.md
-vim $HOME/zet/zets/${dir}/${name}-${dt}/README.md
+
+echo "vim into your new zet?"
+read yn
+
+if [[ ! yn=='n' ]]
+then
+	vim $HOME/zet/zets/${dir}/${name}-${dt}/README.md
+fi
