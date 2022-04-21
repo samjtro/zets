@@ -132,4 +132,5 @@ The old container is still running!
 
 To share Docker images, you have to use a Docker registry
 
+> Most popular is [Docker Hub](hub.docker.com)
 
