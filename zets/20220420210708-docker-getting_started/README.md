@@ -44,14 +44,14 @@ This tutorial relies on a node.js todo app running at localhost:3000
 
 ### Building the App's Container Image
 
-'''Dockerfile
+```Dockerfile
 FROM node:12-alpine
 RUN apk add --no-cache python2 g++ make
 WORKDIR /app
 copy . .
 RUN yarn install --production
 CMD ["node", "src/index.js"]
-'''
+```
 
 `docker build -t getting-started .`
 
@@ -93,9 +93,9 @@ CMD ["node", "src/index.js"]
 
 `docker run -dp 3000:3000 getting-started`
 
-'''ERROR 
+```ERROR 
 docker: Error response from daemon: driver failed programming external connectivity on endpoint quizzical_ellis (ee7f3ef0499194d66d8555cef5f5ad2ecabb71d98b3397f4d00a147f05c66b19): Bind for 0.0.0.0:3000 failed: port is already allocated.
-'''
+```
 
 The old container is still running!
 
