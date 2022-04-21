@@ -1,8 +1,8 @@
-#[Beginner Boost 2021 Day 5](https://www.youtube.com/watch?v=YcBIUOSOAeg&list=PLrK9UeDMcQLre1yPasCnuKvWvyXKzmKhW&index=6)
+# [Beginner Boost 2021 Day 5](https://www.youtube.com/watch?v=YcBIUOSOAeg&list=PLrK9UeDMcQLre1yPasCnuKvWvyXKzmKhW&index=6)
 
-##Whats a container and why should you care?
+## Whats a container and why should you care?
 
-"kubernetes is the new operating system" [Link](https://www.infoworld.com/article/3322120/sorry-linux-kubernetes-is-now-the-os-that-matters.html)
+["kubernetes is the new operating system"](https://www.infoworld.com/article/3322120/sorry-linux-kubernetes-is-now-the-os-that-matters.html)
 
 **timeline:**
 
@@ -15,15 +15,20 @@
 > TO LEARN: diff between a container and a virtual machine?
 
 **containers allow for management of server-side microservices**
+
 - allows you to combine all components of the back-end application into one component
 - seperation of concerns & encapsulation also allows for secure operations
-
-**a container takes all of that, encapsulates it, and allows for running of the program without giving explicit access**
+- a container takes all of that, encapsulates it, and allows for running of the program without giving explicit access
 - can punch holes through it -- can let it access one file, or one socket
 - but MUST EXPLICITLY POKE THOSE HOLES
 - by default, it has access to itself
 
-> containers allow you to bundle up all runtime neccessities while writing project code for deployment
+**containers are images, which allow you to bundle up all runtime neccessities while writing project code for deployment**
+
+- it has been created, the image is similar to a tarball
+- not active until you run it: when it's been run, either by kubernetes or docker or containerd
+- the resources are downloaded and installed, ports are established, and it is running == process
+- you can pause that process, and restart it whenever you want
 
 ##Install Docker
 
