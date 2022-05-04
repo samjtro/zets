@@ -10,12 +10,12 @@ func intSeq() func() int {
 }
 
 func main() {
-	nextInt := intSeq()
+	nextInt := intSeq() //0
 	fmt.Println(nextInt())
 	fmt.Println(nextInt())
 	fmt.Println(nextInt())
 	fmt.Println(nextInt())
 
-	n2 := intSeq()
+	n2 := intSeq() //1
 	fmt.Println(n2())
 }
