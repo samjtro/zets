@@ -7,7 +7,7 @@ import(
 func main() {
 	i := 2
 	fmt.Print("Write ", i, " as ")
-	switch i  { //basic switch
+	switch i  { 
 	case 1:
 		fmt.Println("one")
 	case 2:
@@ -17,22 +17,22 @@ func main() {
 	}
 
 	switch time.Now().Weekday() { 
-	case time.Saturday, time.Sunday: //using commas to seperate multiple expressions
+	case time.Saturday, time.Sunday: 
 		fmt.Println("weekend baby!")
-	default: //and the optional default
+	default: 
 		fmt.Println("weekday :(")
 	}
 
 	t := time.Now()
-	switch { //switch without an expression, exemplefies if/else
-	case t.Hour() < 12: //case expressions can be non-constants
+	switch { 
+	case t.Hour() < 12: 
 		fmt.Println("< noon")
 	default:
 		fmt.Println("afternoon")	
 	}
 	
-	whatAmI := func(i interface{}) { //use type switch to compare interface value
-		switch t := i.(type) { //type switch compares types
+	whatAmI := func(i interface{}) { 
+		switch t := i.(type) { 
 		case bool:
 			fmt.Println("bool!")
 		case int:
