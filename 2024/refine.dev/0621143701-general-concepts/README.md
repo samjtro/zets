@@ -294,3 +294,5 @@ export const MyPage = () => {
 # router provider
 
 router provider helps the app understand the relationship between resources & routes. enables nav features like breadcrumbs, automatic redirections, rendering menu items, inferring hook params, etc.
+
+
