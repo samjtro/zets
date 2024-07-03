@@ -1,0 +1,5 @@
+# intro
+
+## motivations and mindset
+
+
