@@ -1,12 +1,6 @@
-# html, css & js
+# html
 
-html: markup schema for basic structure
-css: static style sheet language to improve visual styling
-js: if html is structure, css is design, js is function
-
-## html
-
-### elements & tags
+## elements & tags
 
 all elements on an html page are pieces of content wrapped in html tags
 
@@ -17,7 +11,7 @@ open/close tag indicate element, content in between
 
 [mozilla html ref](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-### void elements
+## void elements
 
 some html elements do not have a closing tag
 aka `<br>`, `<img>`
@@ -28,7 +22,7 @@ self-closing tags, aka `<br />` & `<img />`, are discouraged in the most recent 
 
 [video on markdown](https://www.youtube.com/watch?v=LGQuIIv2RVA)
 
-### boilerplate
+## boilerplate
 
 `<!DOCTYPE html>`: HTML5
 `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">`: HTML4
@@ -38,22 +32,22 @@ self-closing tags, aka `<br />` & `<img />`, are discouraged in the most recent 
 </html>
 ```
 
-#### head element
+### head element
 
 `<head>` is where the meta-info about the webpage, no elements that display content allowed
 
-##### meta element
+### meta element
 
 `<meta>` tag, always specify the charset encoding of the webpage, ie `<meta charset="utf-8">`
 
-#### body element
+### body element
 
 always in html, under head
 
 using vscode (ew) generation, this line is generated:
 `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
-### working with text
+## working with text
 
 `<p>`, `<h1-h6>`
 
@@ -61,11 +55,11 @@ using vscode (ew) generation, this line is generated:
 
 `<em>` makes text italic, also semantically marking text as important
 
-#### comments
+### comments
 
 `<!-- -->`
 
-### lists
+## lists
 
 unordered:
 ```
@@ -83,7 +77,7 @@ ordered:
 
 [shay howe on lists](https://learn.shayhowe.com/html-css/creating-lists/)
 
-### links & images
+## links & images
 
 to create links, use the anchor element `<a>`
 
@@ -91,7 +85,7 @@ however, there is no destination without using the `href` attribute
 
 `<a href="www.samjtro.com">samjtro</a>`
 
-#### open links in new tab
+### open links in new tab
 
 the `target` attribute specifies where the linked resource is to be opened
 
@@ -107,22 +101,22 @@ for opening links in new tabs, `rel` must be set to `"noopener noreferrer"`
 
 for security: `noopener` prevents phishing attacks, `noreferrer` wish to not let the opened link know that your resource links to it
 
-### absolute v relative links
+## absolute v relative links
 
-#### absolute
+### absolute
 
 `protocol://domain/path`
 
-#### relative
+### relative
 
 protocol, domain implied
 prepend `./` to relative links
 
-##### metaphor
+#### metaphor
 
 Think of your domain name (town.com) as a town, the directory in which your website is located (/museum) as a museum, and each page on your website as a room in the museum (/museum/movie_room.html and /museum/shops/coffee_shop.html). Relative links like ./shops/coffee_shop.html are directions from the current room (the museum movie room /museum/movie_room.html) to another room (the museum shop). Absolute links, on the other hand, are full directions including the protocol (https), domain name (town.com) and the path from that domain name (/museum/shops/coffee_shop.html): https://town.com/museum/shops/coffee_shop.html.
 
-### images
+## images
 
 `<img>` element displays an image; and is self closing
 empty, self-closing html elements don't need a closing tag
