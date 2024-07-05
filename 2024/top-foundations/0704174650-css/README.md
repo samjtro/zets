@@ -138,3 +138,37 @@ chrome devtools
 
 ## the box model
 
+the most important skill to master from css is positioning and layout
+
+### everything is a box
+
+everything you see in a webpage is a rectangular box
+other boxes can live inside of one another
+
+using `padding`, `border` & `margin` we can manipulate their size and the space between them
+    - `padding` increases the space between the margin and the padding
+    - `border` adds space between the margin and the padding
+    - `margin` increases the space between the borders of a box and the borders of adjacent boxes
+
+[video](https://www.youtube.com/watch?v=HdZHcFWcAd8) and [article](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
+
+## block & inline
+
+most of the elements thus far have been default style `display: block;`
+block elements appear stack atop each other, starting on a new line
+
+inline elements appear in line with whatever else they are placed beside
+for example `<a>` is inline
+
+inline-block elements behave like inline elements, but with block-style padding & margin
+
+### divs and spans
+
+css styling, positioning, etc.
+div is block-level by default: divide the page into blocks
+span is inline-level by default: group text content and inline html for styling, only when no other html element is appropriate
+
+[normal flow](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow)
+[default block/inline](https://www.w3schools.com/html/html_blocks.asp)
+[inline v inline-block](https://www.digitalocean.com/community/tutorials/css-display-inline-vs-inline-block)
+[learn css layout](https://learnlayout.com/no-layout.html)
