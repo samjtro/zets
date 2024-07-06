@@ -126,4 +126,19 @@ not the default value when using a flex shorthand
 
 # axes
 
+`flex-direction` controls the orientation of items within a flex container
+default direction of a container is horizontal, or `row`
+  - or vertical, `column`
+
+```
+.flex-container {
+  flex-direction: row;
+}
+```
+
+no matter which direction, flex-containers have 2 axes; the main axis, the cross axis
+it's the direction of these axes that changes when flex-direction is changed
+
+`flex-direction: row` puts the main axis horizontal, and column puts the main axis vertical
+
 
