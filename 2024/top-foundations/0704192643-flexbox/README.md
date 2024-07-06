@@ -141,4 +141,6 @@ it's the direction of these axes that changes when flex-direction is changed
 
 `flex-direction: row` puts the main axis horizontal, and column puts the main axis vertical
 
+if we used `flex: 1` rather than `flex: 1 1 auto;`, the divs collapse because the `flex` shorthand defaults `flex-basis: 0;` - meaning all `grow`ing and `shrink`ing starts from 0, with the default div height 0
 
+`flex: 1 1 auto;` tells the flex items to default to their given height
