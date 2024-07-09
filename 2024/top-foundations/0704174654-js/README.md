@@ -206,4 +206,16 @@ textBox.addEventListener("keydown" (event) =>
 );
 ```
 
+# problem solving
 
+from `think like a programmer`: `Problem solving is writing an original program that performs a particular set of tasks and meets all stated constraints.`
+
+1. understand the problem
+2. plan
+3. *pseudocode
+4. divide and conquer
+
+## solving fizz buzz
+
+```
+```
