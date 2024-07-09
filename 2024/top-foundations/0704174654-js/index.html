@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <button>press</button>
+    <div id="greeting"></div>
+    <script>
+const button = document.querySelector("button");
+
+function greet() {
+  const age = prompt("age: ");
+  let greeting = document.querySelector("#greeting");
+  let msg = (age < 18) ? 'goodbye' :
+    'hello';
+  greeting.textContent = msg;
+}
+
+button.addEventListener("click", greet);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <button>press</button>
+    <div id="greeting"></div>
+    <script>
+const button = document.querySelector("button");
+
+function greet() {
+  const num = prompt("enter a number: ");
+  let greeting = document.querySelector("#greeting");
+  // for
+  greeting.textContent = msg;
+}
+
+button.addEventListener("click", greet);
+    </script>
+  </body>
+</html>
