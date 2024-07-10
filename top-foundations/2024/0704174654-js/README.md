@@ -215,7 +215,20 @@ from `think like a programmer`: `Problem solving is writing an original program 
 3. *pseudocode
 4. divide and conquer
 
-## solving fizz buzz
+# understanding errors
+
+[what went wrong](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_went_wrong)
+
+# DOM manipulation & events
+
+DOM == `document object model`; a tree-like rep of contents of a webpage
 
 ```
+<div id="1">
+  <div class="2"></div>
+  <div class="3"></div>
+</div>
 ```
+
+use selectors to grab nodes to work with
+
