@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dom</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>THE TITLE OF YOUR WEBPAGE</h1>
+    <button id="btn">click</button>
+    <div id="container"></div>
+    <script>
+const btn = document.querySelector("#btn");
+btn.addEventListener("click", function (e) {
+  e.target.style.background = "blue";
+});
+
+
+const container = document.querySelector("#container");
+
+const content = document.createElement("div");
+content.classList.add("content");
+content.textContent = "This is the glorious text-content!";
+const p1 = document.createElement("p");
+p1.textContent = "Hey I'm red!";
+p1.style.color = "red";
+content.appendChild(p1);
+const h1 = document.createElement("h3");
+h1.textContent = "I'm a blue h3";
+h1.style.color = "blue";
+content.appendChild(h1);
+const div1 = document.createElement("div");
+div1.setAttribute("style", "border: 1px solid black; background-color: pink;");
+const div1h1 = document.createElement("h1");
+div1h1.textContent = "I'm in a div!";
+div1.appendChild(div1h1);
+const div1p1 = document.createElement("p");
+div1p1.textContent = "ME TOO!";
+div1h1.appendChild(div1p1);
+content.appendChild(div1);
+
+container.appendChild(content);
+    </script>
+  </body>
+</html>
