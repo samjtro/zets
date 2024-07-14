@@ -383,7 +383,7 @@ buttons.forEach((button) => {
 });
 ```
 
-# other useful events
+## other useful events
 
 - `click`
 - `dblclick`
@@ -393,3 +393,223 @@ buttons.forEach((button) => {
 [event ref page - w3schools](https://www.w3schools.com/jsref/dom_obj_event.asp)
 
 [additional resources](https://www.theodinproject.com/lessons/foundations-dom-manipulation-and-events#assignment)
+
+# objects - javascript.info
+
+object can be created with figure brackets and an optional list of properties
+
+properties are `k:v` pairs - `key` is a string, `value` can be anything
+
+```
+let user = new Object(); // object constructor
+let user = {};           // object literal
+```
+
+```
+let user = {
+  name: "John",
+  age: 30
+};
+
+user.isAdmin = true;
+delete user.age;
+```
+
+multiword prop names must be quoted
+```
+let user = {
+  ...
+  "is admin": true,
+};
+```
+
+## square brackets
+
+for multiword props, dot access doesn't work - instead, using bracket notation
+
+```
+user["is admin"] = true;
+```
+
+```
+let user = {
+  name: "sam",
+  age: 24,
+};
+
+let key = prompt("what do you want to know", "name");
+alert( user[key] ); //if enter "name", John
+```
+
+## computed properties
+
+you can use square brackets in an object literal when creating an object, called computed properties
+
+```
+let fruit = prompt("fruit? ", "apple");
+
+let bag = {
+  [fruit]: 5,
+};
+
+alert(bag.apple); //if fruit="apple", 5
+```
+
+==
+
+```
+let fruit = prompt("fruit? ", "apple");
+let bag = {};
+
+bag[fruit] = 5;
+```
+
+can use complex expressions inside square brackets:
+
+```
+let fruit = 'apple';
+let bag = {
+  [fruit + 'Computers']: 5 // bag.appleComputers = 5
+};
+```
+
+we can use existing vars as vals for prop names
+
+```
+function makeUser(name, age) {
+  return {
+    name: name,
+    age: age,
+  };
+}
+
+let user = makeUser("john", 30);
+alert(user.name);
+```
+
+shorthand `name:name` == `name`, e.g.
+
+```
+...
+  return {
+    name,
+    age,
+  };
+...
+```
+
+## prop name limitations
+
+vars cannot be named language-reserved words `for`, `let`, etc. - for objects, there's no such restriction
+
+other types are converted to strings when used as prop keys
+
+`0` becomes `"0"`
+
+special prop `__proto__` can be set to a non-object val
+
+## property existence test, "in"
+
+`object.key == undefined` == `"key" in object`
+
+if the key's val is undefined, we still want it to return "false" if key doesn't exist. thus, we use the `in` operator to avoid this pitfall
+
+## walk over all keys, for...in
+
+```
+for (key in object) {
+  ...
+}
+```
+
+if keys are ints, they are sorted in ascending order. else, they are listed in creation order
+
+make a non-int by adding non-int before/after
+
+# objects - the odin project
+
+```
+function sumOfTripledEvens(arr) {
+  let tripledEven = 0;
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i]%2 == 0) {
+      tripledEven += arr[i] * 3;
+    }
+  }
+  return tripledEven;
+}
+```
+
+## map method
+
+`map` function expects a callback as an arg
+returns a new array, running a for,in loop and executing the passed function
+
+```
+function addOne(num) {
+  return num + 1;
+}
+const arr = [1,2,3,4,5];
+const mappedArr = arr.map(addOne);
+console.log(mappedArr);
+```
+
+can also do this inline
+
+```
+...
+const mappedArr = arr.map((num) => num + 1);
+...
+```
+
+## filter method
+
+similar to map but rather than transforming the vals in the arr, it returns the original vals only if the callback returns true
+
+e.g., `isOdd` returns `true`/`false`
+
+`filter` expects `callback` to return `true`/`false`
+
+e.g. if we wanted to remove all even nums from `[1,2,3,4,5]`
+
+```
+function isOdd(num) {
+...
+const oddNums = arr.filter(isOdd);
+```
+
+## reduce method
+
+expects cb, which takes two args
+  - `accumulator`: current val of the result at that point in the loop, set to either the `initialValue` or if none is provided, the first element
+  - `initialValue`: starts from 0 [1st element] if none provided, otherwise, if we wanted to add 10
+
+```
+...
+const productOfAllNums = arr.reduce((total, currentItem) => {
+  return total * currentItem;
+}, 1);
+```
+
+`reduce` goes through every element in arr applying cb, then changes total without changing the array and returns total
+
+# rewrite sum of tripled evens
+
+```
+function sumTripledEvens(arr) {
+  const evens = arr.filter(arr%2 == 0);
+  const tripledEvens = arr.map((num) => num * 3);
+  return arr.reduce((total, currentItem) => return total + currentItem);
+}
+```
+
+simplified as
+
+```
+...
+  return arr
+    .filter((num) => num % 2 === 0)
+    .map((num) => num * 3)
+    .reduce((acc, curr) => acc + curr);
+}
+```
