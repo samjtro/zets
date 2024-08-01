@@ -1,10 +1,14 @@
 import Note from './components/Note'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import db from './services/db'
+import './index.css'
+import Footer from './components/Footer'
 
-const App = (props) => {
-  const [notes, setNotes] = useState(props.notes)
+const App = () => {
+  const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
+  useEffect(() => db.getAll().then(initialNotes => setNotes(initialNotes)), [])
   const addNote = (event) => {
     event.preventDefault()
     var note = {
@@ -12,15 +16,18 @@ const App = (props) => {
       content: newNote,
       important: false
     }
-    setNotes(notes.concat(note))
+    db.create(note).then(returnedNote => setNotes(notes.concat(returnedNote)))
     setNewNote('')
   }
   const handleNoteChange = (event) => {
     setNewNote(event.target.value)
   }
-  const notesToShow = showAll
-    ? notes
-    : notes.filter(note => note.important) //=== true
+  const notesToShow = showAll ? notes : notes.filter(note => note.important) //=== true
+  const toggleImportanceOf = id => {
+    const note = notes.find(n => n.id === id)
+    const newNote = {...note, important: !note.important}
+    db.update(id, newNote).then(returnedNote => setNotes(notes.map(note => note.id !== id ? note : returnedNote)))
+  }
 
   return (
     <div>
@@ -32,12 +39,13 @@ const App = (props) => {
       </div>
       <ul>
         {notesToShow.map(note => 
-        <Note key={note.id} note={note} />)}
+        <Note key={note.id} note={note} toggleImportance={() => toggleImportanceOf(note.id)} />)}
         <form onSubmit={addNote}>
           <input value={newNote} onChange={handleNoteChange} />
           <button type="submit">save</button>
         </form>
       </ul>
+      <Footer />
     </div>
   )
 }
