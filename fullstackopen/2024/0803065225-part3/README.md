@@ -27,3 +27,9 @@ this is how we define a uniform interface
 sometimes this is all referred to more simply as crud or https://en.wikipedia.org/wiki/Resource-oriented_architecture
 
 ## fetching a single resource
+
+create a route to the resource via `express().get('path/:id', (req, resp) => {})`
+can use `[].find(obj => obj.id === req.params.id` to find the resource with the specified id
+`resp.json` still returns json, whereas you can send 404s with `resp.status(statusCode).end()`
+you can additionally modify the status message by using `resp.statusMessage = ''`
+

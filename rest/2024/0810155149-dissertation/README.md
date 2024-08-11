@@ -79,4 +79,57 @@ protocols for communicating had rudimentary support for non-shared caches; did n
 
 requests could identify services that deynamically generate responses such as image-maps and server-sides scripts
 
+work began on intermediary components, through proxies and shared caches; extensions to the protocols were needed for them to function reliably 
+
+## uniform interface
+
+rest's central distinguishing feature from other network-based styles is the emphasis on a uniform interface between components
+
+apply the component of generality to component interface, architecture is simplified and visibility is improved
+
+implementations are decoupled from the services they provide, which encourages independent evolvability
+trade-off; uniform interfaces degrade efficiency, info transferred in a standardized form tends to be far more robust than one specific to an app's needs
+- rest is designed to be efficient for large-grain hypermedia data transfer, aka the common case of the web, but it's result is an interface that is not optimal for other forms of arch interaction 
+
+to obtain a uniform interface, multiple architectural constraints are established:
+- identification of resources
+- manipulation of resources through representation
+- self-descriptive messages
+- hypermedia as the engine of application state 
+
+## layered system
+
+to improve behavior for internet-scale requirements - add layered system constraints
+
+layered system style allows an architecture to be composed of hierarchical layers by constraining comp behavior such that it cannot see beyond it's immediate layer 
+
+restricting knowledge of the system to a single layer places a bound on system complexity and promotes substrate independence
+
+layers can thusly be used to encapsulate legacy services/protect new services from legacy clients. this simplifies comps to a shared intermediary
+
+intermediaries can be used to improve system scalability by enabling load balancing of services across networks/processors
+
+![diagram](https://ics.uci.edu/~fielding/pubs/dissertation/layered_uccss.gif)
+
+disadvantages:
+- they add overhead & latency to the processing of data
+
+can be offset by the benefits of shared caching at intermediaries 
+- shared caches at the boundaries of organizational domains can also result in significant performance benefits
+- such layers also allow security policies to be enforced on data crossing the organizational boundary, as required by firewalls
+
+layered systems + uniform interface constraints induce architectural properties similar to the uniform pipe-filter style 
+
+rest interaction is two-way, but large-grain data flows of hypermedia interaction can be processed like a data-flow network, with filter comp selectively applied to the stream to transform the content as it passes
+- within rest, intermediary components can transform the content of messages because they are self-descriptive, and their semantics are visible to intermediaries 
+
+## code-on-demand
+
+allows client functionality to be extended, by downloading/executing code in applets/scripts; simplifying clients by reducing the num of features required to be pre-implemented
+- improves system extensibility, but reduces visibility 
+
+this is an optional constraint
+
+![diagram](https://ics.uci.edu/~fielding/pubs/dissertation/rest_style.gif)
+
 
