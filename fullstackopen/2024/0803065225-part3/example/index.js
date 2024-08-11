@@ -46,7 +46,7 @@ app.get('/api/notes/:id', (req, resp) => {
 })
 
 app.delete('/api/notes/:id', (req, resp) => {
-    notes = notes.ifilter(note => note.id !== id)
+    notes = notes.filter(note => note.id !== req.params.id)
     resp.status(204).end()
 })
 
