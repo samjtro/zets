@@ -18,3 +18,12 @@ watches files in dir for changes to update rather than having to restart server
 
 first introduced in [this paper](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 - took notes on the paper [here](https://github.com/samjtro/zets/tree/main/rest/2024/0810155149-dissertation/README.md)
+however, paper is not neccesarily as important as the more narrow idea of how restful apis are typically understood in web apps
+
+resources = singular things in restful thinking, has unique url w resource address
+convention: resource/id; e.g. notes/10
+
+this is how we define a uniform interface
+sometimes this is all referred to more simply as crud or https://en.wikipedia.org/wiki/Resource-oriented_architecture
+
+## fetching a single resource
