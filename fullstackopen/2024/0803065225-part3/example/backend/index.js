@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 app.use(express.json())
+app.use(cors())
 
 /* const http = require('http')
 const app = http.createServer((request, response) => {
@@ -65,7 +67,7 @@ app.post('/api/notes', (req, resp) => {
     resp.json(note)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
     console.log(`[log] running on port ${PORT}`)
