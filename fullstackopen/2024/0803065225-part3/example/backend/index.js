@@ -4,6 +4,7 @@ const cors = require('cors')
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('dist'))
 
 /* const http = require('http')
 const app = http.createServer((request, response) => {
@@ -29,10 +30,6 @@ const generateId = () => {
         : 0
     return String(maxId + 1)
 }
-
-app.get('/', (req, resp) => {
-    resp.send('<h1>hello, world</h1>')
-})
 
 app.get('/api/notes', (req, resp) => {
     resp.json(notes)
@@ -67,7 +64,7 @@ app.post('/api/notes', (req, resp) => {
     resp.json(note)
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
     console.log(`[log] running on port ${PORT}`)
