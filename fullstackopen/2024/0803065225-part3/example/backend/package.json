@@ -6,9 +6,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buid:ui": "rm -rf dist; cd ../frontend && npm run build && cp -r dist ../backend/",
+    "build:ui": "rm -rf dist; cd ../frontend && npm run build && cp -r dist ../backend/",
     "deploy": "npm run build:ui; fly deploy",
-    "logs": "fly logs",
+    "logs": "fly logs"
   },
   "author": "sjt",
   "license": "MIT",
