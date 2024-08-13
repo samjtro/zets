@@ -75,4 +75,15 @@ if it was issued using the same url that the source html was fetched from, then 
 to enable legitimate cross-origin requests, w3c came up with the CORS (cross-origin resource sharing) mechanism
 - allows the webpage to embed cross-origin assets
 
+# c - saving data to mongo
 
+## debugging node apps
+
+`node --inspect filename`
+
+## mongodb
+
+mongo is a document db [wikipedia](https://en.wikipedia.org/wiki/Document-oriented_database)
+- lower complexity than a relational db [wikipedia](https://en.wikipedia.org/wiki/Relational_database)
+
+document is a nosql db
