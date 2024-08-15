@@ -87,3 +87,28 @@ mongo is a document db [wikipedia](https://en.wikipedia.org/wiki/Document-orient
 - lower complexity than a relational db [wikipedia](https://en.wikipedia.org/wiki/Relational_database)
 
 document is a nosql db
+
+## schema
+
+```
+const noteSchema = new mongoose.Schema({
+    content: String,
+    important: Boolean,
+})
+const Note = mongoose.model('Note', noteschema)
+```
+
+benefit of working with mongo is that each collection is schema-agnostic, meaning it is defined at the app level
+
+## creating/saving objects
+
+```
+const note = new Note({
+    content: 'test',
+    important: false,
+})
+```
+
+nideks are constructor funcs which create js objs based on the params
+
+save to db with `note.save().then(result => {})`
